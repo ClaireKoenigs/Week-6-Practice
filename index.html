@@ -1,0 +1,100 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <title>THE BURGER JOINT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="header">
+    <h1>THE BURGER JOINT</h1>
+</div>
+<button id="nav-toggle">☰</button>
+<nav id="nav">
+    <a href="index.html">HOME</a>
+    <a href="menu.html">MENU</a>
+    <a href="aboutus.html">ABOUT US</a>
+    <a href="careers.html">CAREERS</a>
+</nav>
+<div id = "banner">
+    <img src = "imgs/burger2.png" alt = "burger">
+</div>
+<section class = "container">
+    <div class = "column left">
+        <h2>Come Find Us!</h2>
+        123 Burger Lane<br>
+        North Sioux Falls, SD 57107<br>
+        (123) 456-7890<br>
+        theburgerjoint@gmail.com<br>
+        Open 11am - 9pm Mon-Sat<br>
+        Closed Sundays<br>
+    </div>
+    <div class = "column right">
+        <h2>Our Socials:</h2>
+        Facebook: @theburgerjoint<br>
+        Instagram: @theburgerjoint<br>
+        Twitter: @theburgerjoint<br>
+        TikTok: @theburgerjoint<br>
+        YouTube: @theburgerjoint<br>
+        Yelp: @theburgerjoint<br>
+    </div>
+</section>
+<div class = "specials">
+    <h2>Our weekly Specials:</h2>
+    <p>Grilled Cheese Patty Melt - $5.99</p>
+        <img src = "imgs/patty.webp" alt = "patty melt">
+    <p>Pretzel Bun Deluxe Burger - $5.99</p>
+        <img src = "imgs/pretzel.webp" alt = "pretzel burger">
+    <p>Mushroom Soup - $3.99</p>
+        <img src = "imgs/soup.jpg" alt = "soup">
+    <p> </p>
+    <h2>Free Refills on all Large Drinks!</h2>
+</div>
+<div id="footer">
+    <p>&copy; 2025 The Burger Joint</p>
+</div>
+<script>
+    const toggleButton = document.getElementById('nav-toggle');
+    const nav = document.getElementById('nav');
+    const navLinks = nav.querySelectorAll('a');
+
+    toggleButton.setAttribute('aria-controls', 'nav');
+    toggleButton.setAttribute('aria-expanded', 'false');
+    toggleButton.setAttribute('aria-label', 'Toggle navigation');
+
+    function openNav() {
+        nav.classList.add('show');
+        toggleButton.setAttribute('aria-expanded', 'true');
+        if (navLinks.length) navLinks[0].focus();
+    }
+
+    function closeNav() {
+        nav.classList.remove('show');
+        toggleButton.setAttribute('aria-expanded', 'false');
+        toggleButton.focus();
+    }
+
+    toggleButton.addEventListener('click', () => {
+        if (nav.classList.contains('show')) closeNav();
+        else openNav();
+    });
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (nav.classList.contains('show')) closeNav();
+        });
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.classList.contains('show')) {
+            closeNav();
+        }
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!nav.contains(e.target) && e.target !== toggleButton && nav.classList.contains('show')) {
+            closeNav();
+        }
+    });
+</script>
+</body>
+</html>
